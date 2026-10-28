@@ -1,1 +1,1 @@
-# BioImpedance-Hydration-Detector
+A prototype device that injects a small current into the human body via four tetrapolar electrodes and calculates the bioimpedance of the body, translating it into hydration level. I'm working on an algorithm for it at the moment so it will be able to adjust based on the user, as depending on age and body composition, readings will vary, which is a large gap in this area, something I hope to solve.
