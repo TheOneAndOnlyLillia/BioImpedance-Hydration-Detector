@@ -140,17 +140,12 @@ void setup() {
     lcd.backlight();
     upload_bar_graph_chars();
     lcd.clear();
-    lcd.setCursor(0, 0); lcd.print(F("Bioimpedance"));
-    lcd.setCursor(0, 1); lcd.print(F("by Lillia"));
 
-    Serial.println(F("============================================"));
-    Serial.println(F("  Bioimpedance Hydration Sensor (by Lillia)"));
-    Serial.println(F("============================================"));
-    Serial.println(F("Starting AD9833 at 50 kHz..."));
+
+
     setup_ad9833();
 
-    Serial.println(F("Reading hardware-detected DC envelope on A0."));
-    Serial.println(F("Taring baseline -- keep electrodes OFF the body now..."));
+    
     delay(1500);
     tare_baseline();
     Serial.print(F("Baseline (no-signal) = "));
@@ -159,7 +154,7 @@ void setup() {
 
     if (howland_current_a == 50e-6f) {
         Serial.println(F("WARNING: injected current is an ESTIMATE."));
-        Serial.println(F("Measure it on a 1k load and update howland_current_a."));
+        Serial.println(F("Measure it on a 1k load and dont forget to update howland_current_a."));
     }
 
     Serial.println(F("Calibration points (edit in code after calibrating):"));
@@ -188,8 +183,8 @@ void loop() {
     if (hydration_score > 100) hydration_score = 100;
 
     const char *status;
-    if      (hydration_pct >= 60) status = "HYDRATED";
-    else if (hydration_pct >= 55) status = "OK";
+    if      (hydration_pct >= 60) status = "Hydrated";
+    else if (hydration_pct >= 55) status = "Ok";
     else if (hydration_pct >= 50) status = "LOW";
     else                          status = "DEHYDRATED";
 
